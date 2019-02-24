@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <cart v-on:remove-from-cart="removeFromCart($event)" :items="cartProducts"></cart>
+        <cart v-on:remove-from-cart="removeFromCart($event)" v-on:payment-done="paymentDone()" :items="cartProducts"></cart>
       </div>
     </div>
   </div>
@@ -49,6 +49,9 @@ export default {
     },
     removeFromCart(item){
       this.cartProducts = this.cartProducts.filter(i => i.id !== item.id); 
+    },
+    paymentDone(){
+      this.cartProducts = [];
     }
   }
 }
